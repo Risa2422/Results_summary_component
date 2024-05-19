@@ -1,5 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+:root {
+  --main-bg-color: hsl(252, 100%, 67%);
+  --second-bg-color: hsl(241, 81%, 54%);
+  --comment-bg-color: hsl(241, 100%, 89%);
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -14,67 +20,71 @@ body {
 
 .container {
   min-height: 100vh;
+  min-width: 100vw;
   display: grid;
   place-content: center;
 }
 
 .component {
   display: flex;
-  width: 500px;
-  height: 400px;
-  /* padding: 1rem; */
+  min-width: 500px;
+  min-height: 300px;
+  max-width: 300px;
   border-radius: 20px;
   box-shadow: 0px 0px 15px -10px;
+  overflow: hidden;
 }
 
 .result {
   overflow: hidden;
   padding: 0.5rem;
-  border-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
   flex: 1;
   font-family: "Roboto", sans-serif;
-  /* border: 1px black olid; */
-  /* box-shadow: 0 0 1px grey; */
-  background-color: hsl(252, 100%, 67%);
-  background-image: linear-gradient(hsl(241, 81%, 54%), hsl(252, 100%, 67%));
+  background-color: var(--main-bg-color);
+  background-image: linear-gradient(
+    var(--main-bg-color),
+    var(--second-bg-color)
+  );
 }
 
 .result h4 {
-  color: hsl(241, 100%, 89%);
-  margin: auto;
+  color: var(--comment-bg-color);
   text-align: center;
   margin: 1.3rem;
 }
 
 .total-score {
-  padding: 3rem;
   border-radius: 50%;
   text-align: center;
+  justify-content: center;
   width: 2rem;
   height: 2rem;
   min-width: 140px;
   min-height: 140px;
   margin: 0 auto;
   background-image: linear-gradient(
-    hsla(241, 72%, 46%, 0),
-    hsla(256, 72%, 46%, 1)
+    hsla(256, 72%, 46%, 1),
+    hsla(241, 72%, 46%, 0)
   );
-}
-
-.total-score p {
-  color: hsl(241, 100%, 89%);
-  font-size: 11px;
+  display: flex;
 }
 
 .score {
-  background-color: red;
-  display: flex;
+  display: grid;
+  place-content: center;
 }
 
 .score h3 {
   font-size: 60px;
   color: white;
-  margin: 0 auto;
+  justify-content: center;
+}
+
+.score p {
+  color: var(--comment-bg-color);
+  font-size: 11px;
 }
 
 .evaluation {
@@ -88,23 +98,32 @@ body {
   text-align: center;
   font-size: 0.8rem;
   margin: 0.5rem 15px;
-  color: hsl(241, 100%, 89%);
+  padding: 0.5rem;
+  color: var(--comment-bg-color);
 }
 
 .summary {
-  padding: 0.3rem;
-  border-radius: 20px;
+  padding: 1.3rem;
   flex: 1;
-  box-shadow: 0px 0px 15px -10px;
 }
 
 .summary h4 {
-  margin: 1.3rem;
+  margin: 0.5rem 0;
 }
 
 .score-list {
-  margin: 1rem;
+  margin: 1rem 0;
   flex-direction: column;
+  min-width: 100px;
+  width: 100%;
+}
+
+.score-category {
+  flex: 1;
+}
+
+.score-result em {
+  font-style: normal;
 }
 
 .skills {
@@ -116,6 +135,7 @@ body {
   padding: 10px;
   height: 40px;
   border-radius: 10px;
+  gap: 0.5rem;
 }
 
 .logo {
@@ -142,7 +162,7 @@ body {
 
 .visual {
   justify-content: space-between;
-  color: hsl(234, 85%, 45%);
+  color: var(--second-bg-color);
   background-color: #f3f3fd;
 }
 
@@ -160,5 +180,16 @@ body {
 }
 
 #continue-button:hover {
-  opacity: 0.6;
+  background-image: linear-gradient(
+    var(--main-bg-color),
+    var(--second-bg-color)
+  );
+}
+
+@media screen and (max-width: 375px) {
+  .component {
+    min-height: 100vh;
+    min-width: 100vw;
+    flex-direction: column;
+  }
 }
