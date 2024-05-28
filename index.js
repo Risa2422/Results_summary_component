@@ -7,7 +7,7 @@ let scoreHtml = "";
 data.forEach((scoreData) => {
   scoreHtml += `
         <div class="skills ${scoreData.category.toLowerCase()}">
-            <div>    
+            <div class="skills-icon">    
                 <img
                     src="${scoreData.icon}"
                     alt="logo-${scoreData.category.toLowerCase()}"
